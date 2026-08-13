@@ -1,0 +1,58 @@
+@startuml usecase
+title Home-Assist
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor White
+  BorderColor Black
+}
+
+actor customer
+actor "service provider" as ServiceProvider
+actor admin
+
+rectangle Home-Assist {
+
+  usecase "Register/login" as UC1
+  usecase "View services" as UC2
+  usecase "Book services" as UC3
+  usecase "Make payment" as UC4
+  usecase "View Booking" as UC5
+  usecase "Feed back" as UC6
+
+  usecase "Verify user" as UC7
+  usecase "Send notification" as UC8
+
+  usecase "Manage users" as UC9
+  usecase "Verification" as UC10
+  usecase "Manage services" as UC11
+  usecase "Manage Booking" as UC12
+}
+
+' Customer associations
+customer -- UC1
+customer -- UC2
+customer -- UC3
+customer -- UC4
+customer -- UC5
+customer -- UC6
+
+' Service Provider associations
+ServiceProvider -- UC1
+ServiceProvider -- UC12
+
+' Admin associations
+admin -- UC9
+admin -- UC10
+admin -- UC11
+admin -- UC12
+
+' Include relationships
+UC3 ..> UC7 : <<include>>
+UC3 ..> UC8 : <<include>>
+
+' Extend relationship
+UC6 ..> UC8 : <<extend>>
+
+@enduml
