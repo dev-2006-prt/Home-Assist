@@ -55,6 +55,57 @@ The customer selects a service and chooses the **Book Service** option.
 
 ---
 
+## UC-02: View Services
+
+**Primary Actor:**  
+Customer
+
+**Stakeholders:**
+- Customer — wants to view available home services and choose a suitable service.
+- Service Provider — wants their available services to be visible to customers.
+- Admin — wants services listed on the platform to be properly managed.
+
+**Preconditions:**
+1. Customer is registered and logged into the system.
+2. The Home-Assist system is available.
+3. At least one service is available in the system.
+
+**Postconditions:**
+1. The system displays the available services to the customer.
+2. The customer can view the details of a selected service.
+3. The customer can select a service to proceed with booking.
+
+**Trigger:**  
+The customer selects the **View Services** option.
+
+### Main Flow
+
+1. Customer logs into the system.
+2. Customer selects the **View Services** option.
+3. System retrieves the available services.
+4. System displays the list of available services.
+5. Customer selects a service from the list.
+6. System displays the selected service details.
+7. Customer can proceed to the **Book Service** option.
+
+### Alternate Flows
+
+#### AF1 — No Services Available
+
+1. Customer selects the **View Services** option.
+2. System checks the available services.
+3. No services are currently available.
+4. System displays a message informing the customer that no services are available.
+5. Customer can return to the main menu and try again later.
+
+#### AF2 — Selected Service Unavailable
+
+1. Customer selects a service from the displayed list.
+2. System checks the current availability of the selected service.
+3. The selected service is no longer available.
+4. System informs the customer that the service is currently unavailable.
+5. Customer returns to the service list and selects another service.
+
 ## UC-03: Manage Booking
 
 **Primary Actor:**  
