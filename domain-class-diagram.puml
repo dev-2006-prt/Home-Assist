@@ -1,0 +1,83 @@
+@startuml
+
+title Home-Assist - Domain Class Diagram
+
+skinparam classAttributeIconSize 0
+
+class Customer {
+    - customerId : int
+    - name : String
+    - email : String
+    - phone : String
+    + login() : void
+    + viewServices() : void
+    + selectService(service : Service) : void
+    + selectTimeSlot(slot : TimeSlot) : void
+    + confirmBooking(booking : Booking) : void
+    + cancelBooking(booking : Booking) : void
+    + viewBooking(booking : Booking) : void
+}
+
+class ServiceProvider {
+    - providerId : int
+    - name : String
+    - phone : String
+    - available : boolean
+    + login() : void
+    + viewBookings() : void
+    + acceptBooking(booking : Booking) : void
+    + rejectBooking(booking : Booking) : void
+    + performService(booking : Booking) : void
+    + updateBookingStatus(booking : Booking, status : String) : void
+}
+
+class Admin {
+    - adminId : int
+    - name : String
+    - email : String
+    + monitorBookings() : void
+    + manageBooking(booking : Booking) : void
+}
+
+class Service {
+    - serviceId : int
+    - name : String
+    - description : String
+    - price : double
+    + getDetails() : String
+    + getPrice() : double
+}
+
+class Booking {
+    - bookingId : int
+    - status : String
+    - createdAt : Date
+    + createBooking() : void
+    + confirmBooking() : void
+    + rejectBooking() : void
+    + completeBooking() : void
+    + updateStatus(status : String) : void
+}
+
+class TimeSlot {
+    - slotId : int
+    - date : Date
+    - time : String
+    - available : boolean
+    + checkAvailability() : boolean
+    + reserve() : void
+}
+
+Customer "1" -- "0..*" Booking : makes
+
+Service "1" -- "0..*" Booking : requested in
+
+ServiceProvider "1" -- "0..*" Booking : manages
+
+TimeSlot "1" -- "0..*" Booking : scheduled for
+
+Admin "1" -- "0..*" Booking : monitors
+
+ServiceProvider "1" -- "0..*" Service : provides
+
+@enduml
