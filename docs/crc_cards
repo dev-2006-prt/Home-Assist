@@ -1,0 +1,68 @@
+# CRC Cards
+
+CRC stands for:
+
+- **C** — Class
+- **R** — Responsibilities
+- **C** — Collaborators
+
+---
+
+## CRC Card 1 — Customer
+
+| Class | Responsibilities | Collaborators |
+|---|---|---|
+| **Customer** | Log into the system; view available services; select a service; select a preferred date and time; confirm a booking; cancel the booking process before confirmation; view booking details; view updated booking status. | Service, TimeSlot, Booking, ServiceProvider |
+
+---
+
+## CRC Card 2 — ServiceProvider
+
+| Class | Responsibilities | Collaborators |
+|---|---|---|
+| **ServiceProvider** | Log into the system; view available booking requests; view booking details; accept a booking; reject a booking; perform the requested service; update booking status. | Booking, Customer, Service, TimeSlot |
+
+---
+
+## CRC Card 3 — Admin
+
+| Class | Responsibilities | Collaborators |
+|---|---|---|
+| **Admin** | Monitor bookings; manage booking information; ensure bookings are properly recorded; monitor booking status. | Booking, Customer, ServiceProvider, Service |
+
+---
+
+## CRC Card 4 — Service
+
+| Class | Responsibilities | Collaborators |
+|---|---|---|
+| **Service** | Store service information; provide service details; represent the service requested by a customer; provide service information to customers. | Customer, Booking, ServiceProvider |
+
+---
+
+## CRC Card 5 — Booking
+
+| Class | Responsibilities | Collaborators |
+|---|---|---|
+| **Booking** | Create a booking; store booking information; maintain booking status; associate a customer with a service; associate a service provider with a booking; store the selected time slot; provide booking details; confirm a booking; reject a booking; complete a booking; update booking status. | Customer, Service, ServiceProvider, TimeSlot, Admin |
+
+---
+
+## CRC Card 6 — TimeSlot
+
+| Class | Responsibilities | Collaborators |
+|---|---|---|
+| **TimeSlot** | Store the date of a service; store the time of a service; represent an available time slot; check whether a time slot is available; reserve a selected time slot. | Customer, Booking, ServiceProvider |
+
+---
+
+## CRC Summary
+
+| Class | Main Responsibilities |
+|---|---|
+| Customer | View services, select service, book service, view booking |
+| ServiceProvider | Accept/reject bookings, perform service, update status |
+| Admin | Monitor and manage bookings |
+| Service | Store and provide service information |
+| Booking | Create and manage booking information and status |
+| TimeSlot | Store and manage date/time availability |
