@@ -1,0 +1,55 @@
+@startuml
+
+title Home-Assist - Object Diagram
+
+object "customer101 : Customer" as customer101 {
+    customerId = 101
+    name = "Rahul Sharma"
+    email = "rahul@example.com"
+    phone = "9876543210"
+}
+
+object "service201 : Service" as service201 {
+    serviceId = 201
+    name = "Plumbing"
+    description = "Home plumbing service"
+    price = 500.0
+}
+
+object "provider301 : ServiceProvider" as provider301 {
+    providerId = 301
+    name = "Amit Kumar"
+    phone = "9123456780"
+    available = true
+}
+
+object "slot401 : TimeSlot" as slot401 {
+    slotId = 401
+    date = "18-08-2026"
+    time = "10:00 AM"
+    available = false
+}
+
+object "booking501 : Booking" as booking501 {
+    bookingId = 501
+    status = "Confirmed"
+    createdAt = "17-08-2026"
+}
+
+object "admin601 : Admin" as admin601 {
+    adminId = 601
+    name = "Platform Admin"
+    email = "admin@homeassist.com"
+}
+
+customer101 -- booking501 : makes
+
+service201 -- booking501 : requested
+
+provider301 -- booking501 : manages
+
+slot401 -- booking501 : scheduled for
+
+admin601 -- booking501 : monitors
+
+@enduml
