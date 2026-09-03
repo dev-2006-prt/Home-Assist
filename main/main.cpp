@@ -114,3 +114,66 @@ public:
         cout << "Price: Rs. " << price << endl;
     }
 };
+class TimeSlot
+{
+private:
+    int slotId;
+    string date;
+    string time;
+    bool available;
+
+public:
+
+    // DEFAULT CONSTRUCTOR
+    TimeSlot()
+    {
+        slotId = 0;
+        date = "Not Set";
+        time = "Not Set";
+        available = true;
+    }
+
+    // PARAMETERIZED CONSTRUCTOR
+    TimeSlot(int id, string d, string t, bool a)
+    {
+        slotId = id;
+        date = d;
+        time = t;
+        available = a;
+    }
+
+    bool checkAvailability()
+    {
+        return available;
+    }
+
+    void reserve()
+    {
+        if (available)
+        {
+            available = false;
+            cout << "Time slot reserved successfully." << endl;
+        }
+        else
+        {
+            cout << "Time slot is already unavailable." << endl;
+        }
+    }
+
+    string getDate()
+    {
+        return date;
+    }
+
+    string getTime()
+    {
+        return time;
+    }
+
+    int getSlotId()
+    {
+        return slotId;
+    }
+};
+
+
