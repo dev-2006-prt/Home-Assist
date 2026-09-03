@@ -263,3 +263,122 @@ bool operator==(const Booking& other)
     }
 };
 
+//                     CUSTOMER CLASS INHERITANCE
+
+class Customer : public User
+{
+private:
+    string phone;
+
+public:
+
+    // DEFAULT CONSTRUCTOR
+    Customer() : User()
+    {
+        phone = "Not Provided";
+    }
+
+    // PARAMETERIZED CONSTRUCTOR
+    Customer(
+        int id,
+        string n,
+        string e,
+        string p
+    ) : User(id, n, e)
+    {
+        phone = p;
+    }
+
+    void viewServices()
+    {
+        cout << name
+             << " is viewing available services."
+             << endl;
+    }
+
+    void selectService(Service service)
+    {
+        cout << name
+             << " selected service: "
+             << service.getName()
+             << endl;
+    }
+
+
+
+    // METHOD OVERLOADING
+  
+
+    // bookService() WITHOUT TimeSlot
+    void bookService(Service service)
+    {
+        cout << name
+             << " booked service: "
+             << service.getName()
+             << endl;
+
+        cout << "Price: Rs. "
+             << service.getPrice()
+             << endl;
+    }
+
+
+    // bookService() WITH TimeSlot
+    void bookService(Service service, TimeSlot slot)
+    {
+        cout << name
+             << " booked service: "
+             << service.getName()
+             << endl;
+
+        cout << "Price: Rs. "
+             << service.getPrice()
+             << endl;
+
+        cout << "Date: "
+             << slot.getDate()
+             << endl;
+
+        cout << "Time: "
+             << slot.getTime()
+             << endl;
+    }
+
+
+    void makePayment(double amount)
+    {
+        cout << name
+             << " made payment of Rs. "
+             << amount
+             << endl;
+    }
+
+    void viewBooking(Booking booking)
+    {
+        cout << "Booking ID: "
+             << booking.getBookingId()
+             << endl;
+
+        cout << "Status: "
+             << booking.getStatus()
+             << endl;
+    }
+
+    void cancelBooking(Booking booking)
+    {
+        cout << "Booking "
+             << booking.getBookingId()
+             << " cancelled."
+             << endl;
+    }
+
+    void giveFeedback(string feedback)
+    {
+        cout << "Feedback from "
+             << name
+             << ": "
+             << feedback
+             << endl;
+    }
+};
+
