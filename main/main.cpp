@@ -459,4 +459,60 @@ public:
         booking.updateStatus(status);
     }
 };
+// Admin Class
+class Admin : public User
+{
+public:
+
+    // DEFAULT CONSTRUCTOR
+    Admin() : User()
+    {
+    }
+
+    // PARAMETERIZED CONSTRUCTOR
+    Admin(
+        int id,
+        string n,
+        string e
+    ) : User(id, n, e)
+    {
+    }
+
+    void monitorBookings()
+    {
+        cout << name
+             << " is monitoring bookings."
+             << endl;
+    }
+
+    void manageBooking(Booking& booking)
+    {
+        cout << name
+             << " is managing booking "
+             << booking.getBookingId()
+             << endl;
+    }
+
+    void manageUsers()
+    {
+        cout << name
+             << " is managing users."
+             << endl;
+    }
+
+    void verifyUser()
+    {
+        cout << name
+             << " verified a user."
+             << endl;
+    }
+
+    void manageServices()
+    {
+        cout << name
+             << " is managing services."
+             << endl;
+    }
+};
+
 
