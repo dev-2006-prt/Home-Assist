@@ -177,5 +177,89 @@ public:
         return slotId;
     }
 };
+///                      BOOKING CLASS
+class Booking
+{
+private:
+    int bookingId;
+    string status;
+    int serviceId;
+    int slotId;
 
+public:
+
+    // DEFAULT CONSTRUCTOR
+    Booking()
+    {
+        bookingId = 0;
+        status = "Pending";
+        serviceId = 0;
+        slotId = 0;
+    }
+
+    // PARAMETERIZED CONSTRUCTOR
+    Booking(int id, string s, int sid, int tid)
+    {
+        bookingId = id;
+        status = s;
+        serviceId = sid;
+        slotId = tid;
+    }
+
+    void createBooking()
+    {
+        cout << "Booking " << bookingId
+             << " created." << endl;
+    }
+
+    void confirmBooking()
+    {
+        status = "Confirmed";
+
+        cout << "Booking " << bookingId
+             << " confirmed." << endl;
+    }
+
+    void rejectBooking()
+    {
+        status = "Rejected";
+
+        cout << "Booking " << bookingId
+             << " rejected." << endl;
+    }
+
+    void completeBooking()
+    {
+        status = "Completed";
+
+        cout << "Booking " << bookingId
+             << " completed." << endl;
+    }
+
+    void updateStatus(string s)
+    {
+        status = s;
+
+        cout << "Booking " << bookingId
+             << " status updated to "
+             << status << endl;
+    }
+
+    int getBookingId()
+    {
+        return bookingId;
+    }
+
+    string getStatus()
+    {
+        return status;
+    }
+
+    // OPERATOR OVERLOADING
+
+bool operator==(const Booking& other)
+    {
+        return bookingId == other.bookingId;
+    }
+};
 
