@@ -381,4 +381,82 @@ public:
              << endl;
     }
 };
+// ============================================================
+//                  SERVICE PROVIDER CLASS
+//                       INHERITANCE
+// ============================================================
+
+class ServiceProvider : public User
+{
+private:
+    string phone;
+    bool available;
+
+public:
+
+    // DEFAULT CONSTRUCTOR
+    ServiceProvider() : User()
+    {
+        phone = "Not Provided";
+        available = true;
+    }
+
+    // PARAMETERIZED CONSTRUCTOR
+    ServiceProvider(
+        int id,
+        string n,
+        string e,
+        string p,
+        bool a
+    ) : User(id, n, e)
+    {
+        phone = p;
+        available = a;
+    }
+
+    void viewBookings()
+    {
+        cout << name
+             << " is viewing bookings."
+             << endl;
+    }
+
+    void acceptBooking(Booking& booking)
+    {
+        booking.confirmBooking();
+
+        cout << name
+             << " accepted booking "
+             << booking.getBookingId()
+             << endl;
+    }
+
+    void rejectBooking(Booking& booking)
+    {
+        booking.rejectBooking();
+
+        cout << name
+             << " rejected booking "
+             << booking.getBookingId()
+             << endl;
+    }
+
+    void performService(Booking& booking)
+    {
+        cout << name
+             << " is performing booking "
+             << booking.getBookingId()
+             << endl;
+
+        booking.completeBooking();
+    }
+
+    void updateBookingStatus(
+        Booking& booking,
+        string status
+    )
+    {
+        booking.updateStatus(status);
+    }
+};
 
