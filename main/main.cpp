@@ -114,6 +114,8 @@ public:
         cout << "Price: Rs. " << price << endl;
     }
 };
+
+// TimeSlot class
 class TimeSlot
 {
 private:
