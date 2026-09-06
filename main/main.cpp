@@ -5,7 +5,6 @@ using namespace std;
 
 //USER CLASS
 
-
 class User
 {
 private:
@@ -115,404 +114,52 @@ public:
     }
 };
 
-// TimeSlot class
-class TimeSlot
+int main()
 {
-private:
-    int slotId;
-    string date;
-    string time;
-    bool available;
+    // Creating User using DEFAULT CONSTRUCTOR
+    User user1;
 
-public:
+    cout << "---- Default User ----" << endl;
+    cout << "User ID: " << user1.getUserId() << endl;
+    cout << "Name: " << user1.getName() << endl;
+    cout << "Email: " << user1.getEmail() << endl;
 
-    // DEFAULT CONSTRUCTOR
-    TimeSlot()
-    {
-        slotId = 0;
-        date = "Not Set";
-        time = "Not Set";
-        available = true;
-    }
+    user1.login();
 
-    // PARAMETERIZED CONSTRUCTOR
-    TimeSlot(int id, string d, string t, bool a)
-    {
-        slotId = id;
-        date = d;
-        time = t;
-        available = a;
-    }
+    cout << endl;
 
-    bool checkAvailability()
-    {
-        return available;
-    }
+    // Creating User using PARAMETERIZED CONSTRUCTOR
+    User user2(101, "Devansh", "devansh@gmail.com");
 
-    void reserve()
-    {
-        if (available)
-        {
-            available = false;
-            cout << "Time slot reserved successfully." << endl;
-        }
-        else
-        {
-            cout << "Time slot is already unavailable." << endl;
-        }
-    }
+    cout << "---- Parameterized User ----" << endl;
+    cout << "User ID: " << user2.getUserId() << endl;
+    cout << "Name: " << user2.getName() << endl;
+    cout << "Email: " << user2.getEmail() << endl;
 
-    string getDate()
-    {
-        return date;
-    }
+    user2.login();
 
-    string getTime()
-    {
-        return time;
-    }
+    cout << endl;
 
-    int getSlotId()
-    {
-        return slotId;
-    }
-};
-///                      BOOKING CLASS
-class Booking
-{
-private:
-    int bookingId;
-    string status;
-    int serviceId;
-    int slotId;
+    // Creating Service using DEFAULT CONSTRUCTOR
+    Service service1;
 
-public:
+    cout << "---- Default Service ----" << endl;
+    service1.getDetails();
 
-    // DEFAULT CONSTRUCTOR
-    Booking()
-    {
-        bookingId = 0;
-        status = "Pending";
-        serviceId = 0;
-        slotId = 0;
-    }
+    cout << endl;
 
-    // PARAMETERIZED CONSTRUCTOR
-    Booking(int id, string s, int sid, int tid)
-    {
-        bookingId = id;
-        status = s;
-        serviceId = sid;
-        slotId = tid;
-    }
+    // Creating Service using PARAMETERIZED CONSTRUCTOR
+    Service service2(
+        201,
+        "AC Repair",
+        "Air conditioner repair and servicing",
+        799
+    );
 
-    void createBooking()
-    {
-        cout << "Booking " << bookingId
-             << " created." << endl;
-    }
+    cout << "---- Parameterized Service ----" << endl;
+    service2.getDetails();
 
-    void confirmBooking()
-    {
-        status = "Confirmed";
-
-        cout << "Booking " << bookingId
-             << " confirmed." << endl;
-    }
-
-    void rejectBooking()
-    {
-        status = "Rejected";
-
-        cout << "Booking " << bookingId
-             << " rejected." << endl;
-    }
-
-    void completeBooking()
-    {
-        status = "Completed";
-
-        cout << "Booking " << bookingId
-             << " completed." << endl;
-    }
-
-    void updateStatus(string s)
-    {
-        status = s;
-
-        cout << "Booking " << bookingId
-             << " status updated to "
-             << status << endl;
-    }
-
-    int getBookingId()
-    {
-        return bookingId;
-    }
-
-    string getStatus()
-    {
-        return status;
-    }
-
-    // OPERATOR OVERLOADING
-
-bool operator==(const Booking& other)
-    {
-        return bookingId == other.bookingId;
-    }
-};
-
-//                     CUSTOMER CLASS INHERITANCE
-
-class Customer : public User
-{
-private:
-    string phone;
-
-public:
-
-    // DEFAULT CONSTRUCTOR
-    Customer() : User()
-    {
-        phone = "Not Provided";
-    }
-
-    // PARAMETERIZED CONSTRUCTOR
-    Customer(
-        int id,
-        string n,
-        string e,
-        string p
-    ) : User(id, n, e)
-    {
-        phone = p;
-    }
-
-    void viewServices()
-    {
-        cout << name
-             << " is viewing available services."
-             << endl;
-    }
-
-    void selectService(Service service)
-    {
-        cout << name
-             << " selected service: "
-             << service.getName()
-             << endl;
-    }
-
-
-
-    // METHOD OVERLOADING
-  
-
-    // bookService() WITHOUT TimeSlot
-    void bookService(Service service)
-    {
-        cout << name
-             << " booked service: "
-             << service.getName()
-             << endl;
-
-        cout << "Price: Rs. "
-             << service.getPrice()
-             << endl;
-    }
-
-
-    // bookService() WITH TimeSlot
-    void bookService(Service service, TimeSlot slot)
-    {
-        cout << name
-             << " booked service: "
-             << service.getName()
-             << endl;
-
-        cout << "Price: Rs. "
-             << service.getPrice()
-             << endl;
-
-        cout << "Date: "
-             << slot.getDate()
-             << endl;
-
-        cout << "Time: "
-             << slot.getTime()
-             << endl;
-    }
-
-
-    void makePayment(double amount)
-    {
-        cout << name
-             << " made payment of Rs. "
-             << amount
-             << endl;
-    }
-
-    void viewBooking(Booking booking)
-    {
-        cout << "Booking ID: "
-             << booking.getBookingId()
-             << endl;
-
-        cout << "Status: "
-             << booking.getStatus()
-             << endl;
-    }
-
-    void cancelBooking(Booking booking)
-    {
-        cout << "Booking "
-             << booking.getBookingId()
-             << " cancelled."
-             << endl;
-    }
-
-    void giveFeedback(string feedback)
-    {
-        cout << "Feedback from "
-             << name
-             << ": "
-             << feedback
-             << endl;
-    }
-};
-// ============================================================
-//                  SERVICE PROVIDER CLASS
-//                       INHERITANCE
-// ============================================================
-
-class ServiceProvider : public User
-{
-private:
-    string phone;
-    bool available;
-
-public:
-
-    // DEFAULT CONSTRUCTOR
-    ServiceProvider() : User()
-    {
-        phone = "Not Provided";
-        available = true;
-    }
-
-    // PARAMETERIZED CONSTRUCTOR
-    ServiceProvider(
-        int id,
-        string n,
-        string e,
-        string p,
-        bool a
-    ) : User(id, n, e)
-    {
-        phone = p;
-        available = a;
-    }
-
-    void viewBookings()
-    {
-        cout << name
-             << " is viewing bookings."
-             << endl;
-    }
-
-    void acceptBooking(Booking& booking)
-    {
-        booking.confirmBooking();
-
-        cout << name
-             << " accepted booking "
-             << booking.getBookingId()
-             << endl;
-    }
-
-    void rejectBooking(Booking& booking)
-    {
-        booking.rejectBooking();
-
-        cout << name
-             << " rejected booking "
-             << booking.getBookingId()
-             << endl;
-    }
-
-    void performService(Booking& booking)
-    {
-        cout << name
-             << " is performing booking "
-             << booking.getBookingId()
-             << endl;
-
-        booking.completeBooking();
-    }
-
-    void updateBookingStatus(
-        Booking& booking,
-        string status
-    )
-    {
-        booking.updateStatus(status);
-    }
-};
-// Admin Class
-class Admin : public User
-{
-public:
-
-    // DEFAULT CONSTRUCTOR
-    Admin() : User()
-    {
-    }
-
-    // PARAMETERIZED CONSTRUCTOR
-    Admin(
-        int id,
-        string n,
-        string e
-    ) : User(id, n, e)
-    {
-    }
-
-    void monitorBookings()
-    {
-        cout << name
-             << " is monitoring bookings."
-             << endl;
-    }
-
-    void manageBooking(Booking& booking)
-    {
-        cout << name
-             << " is managing booking "
-             << booking.getBookingId()
-             << endl;
-    }
-
-    void manageUsers()
-    {
-        cout << name
-             << " is managing users."
-             << endl;
-    }
-
-    void verifyUser()
-    {
-        cout << name
-             << " verified a user."
-             << endl;
-    }
-
-    void manageServices()
-    {
-        cout << name
-             << " is managing services."
-             << endl;
-    }
-};
+    return 0;
+}
 
 
