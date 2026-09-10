@@ -122,6 +122,53 @@ public:
     }
 };
 
+// SERVICE PROVIDER CLASS
+// ServiceProvider inherits from User
+
+class ServiceProvider : public User
+{
+private:
+    int serviceProviderId;
+    string serviceType;
+    double rating;
+
+public:
+
+    // DEFAULT CONSTRUCTOR
+    ServiceProvider()
+    {
+        serviceProviderId = 0;
+        serviceType = "Not Assigned";
+        rating = 0.0;
+    }
+
+    // PARAMETERIZED CONSTRUCTOR
+    ServiceProvider(int spId, string n, string e,
+                    int id, string type, double r)
+        : User(id, n, e)
+    {
+        serviceProviderId = spId;
+        serviceType = type;
+        rating = r;
+    }
+
+    // METHOD
+    void provideService()
+    {
+        cout << name << " provides " << serviceType << " service." << endl;
+    }
+
+    // METHOD
+    void displayProvider()
+    {
+        cout << "Service Provider ID: " << serviceProviderId << endl;
+        cout << "Name: " << name << endl;
+        cout << "Email: " << email << endl;
+        cout << "Service Type: " << serviceType << endl;
+        cout << "Rating: " << rating << endl;
+    }
+};
+
 
 int main()
 {
@@ -195,6 +242,20 @@ int main()
     cout << "Price of Service 2: Rs. " << service2.getPrice() << endl;
     cout << "Price of Service 3: Rs. " << service3.getPrice() << endl;
     cout << "Total Price: Rs. " << total << endl;
+    cout << endl ;
+    cout << "----Service Provider ----" << endl;
+    ServiceProvider sp(
+        501,
+        "Rahul",
+        "rahul@gmail.com",
+        101,
+        "Plumbing",
+        4.5
+    );
+
+    sp.login();             // inherited from User
+    sp.displayProvider();   // ServiceProvider's own method
+    sp.provideService();
 
     return 0;
 }
