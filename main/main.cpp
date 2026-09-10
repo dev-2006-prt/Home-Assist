@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//USER CLASS
+// USER CLASS
 
 class User
 {
@@ -56,7 +56,9 @@ public:
     }
 };
 
-// Service Class
+
+// SERVICE CLASS
+
 class Service
 {
 private:
@@ -112,7 +114,14 @@ public:
         cout << "Description: " << description << endl;
         cout << "Price: Rs. " << price << endl;
     }
+
+    // FRIEND FUNCTION FOR OPERATOR OVERLOADING
+    friend double operator+(Service s1, Service s2)
+    {
+        return s1.price + s2.price;
+    }
 };
+
 
 int main()
 {
@@ -128,6 +137,7 @@ int main()
 
     cout << endl;
 
+
     // Creating User using PARAMETERIZED CONSTRUCTOR
     User user2(101, "Devansh", "devansh@gmail.com");
 
@@ -140,6 +150,7 @@ int main()
 
     cout << endl;
 
+
     // Creating Service using DEFAULT CONSTRUCTOR
     Service service1;
 
@@ -147,6 +158,7 @@ int main()
     service1.getDetails();
 
     cout << endl;
+
 
     // Creating Service using PARAMETERIZED CONSTRUCTOR
     Service service2(
@@ -159,7 +171,30 @@ int main()
     cout << "---- Parameterized Service ----" << endl;
     service2.getDetails();
 
+    cout << endl;
+
+
+    // Creating another service
+    Service service3(
+        202,
+        "Plumbing",
+        "Home plumbing and repair",
+        500
+    );
+
+    cout << "---- Second Service ----" << endl;
+    service3.getDetails();
+
+    cout << endl;
+
+
+    // OPERATOR OVERLOADING
+    double total = service2 + service3;
+
+    cout << "---- Operator Overloading ----" << endl;
+    cout << "Price of Service 2: Rs. " << service2.getPrice() << endl;
+    cout << "Price of Service 3: Rs. " << service3.getPrice() << endl;
+    cout << "Total Price: Rs. " << total << endl;
+
     return 0;
 }
-
-
