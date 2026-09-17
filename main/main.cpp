@@ -370,5 +370,23 @@ admin.addService(service2);
 
 admin.removeService(service3);
 
+cout << "---- Nested Class: Booking ----" << endl;
+
+Service::Booking booking(
+    1001,
+    "Devansh",
+    "18 September 2026"
+);
+
+booking.displayBooking();
+
+cout << endl;
+
+booking.acceptBooking();
+
+cout << endl;
+
+booking.displayBooking();
+
     return 0;
 }
