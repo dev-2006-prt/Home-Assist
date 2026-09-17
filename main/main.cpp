@@ -168,6 +168,60 @@ public:
         cout << "Rating: " << rating << endl;
     }
 };
+class Admin final
+{
+private:
+    int adminId;
+    string adminName;
+    string email;
+
+public:
+
+    // DEFAULT CONSTRUCTOR
+    Admin()
+    {
+        adminId = 0;
+        adminName = "Unknown";
+        email = "Not Provided";
+    }
+
+    // PARAMETERIZED CONSTRUCTOR
+    Admin(int id, string name, string e)
+    {
+        adminId = id;
+        adminName = name;
+        email = e;
+    }
+
+    // ADMIN LOGIN
+    void login()
+    {
+        cout << adminName
+             << " logged in as Admin." << endl;
+    }
+
+    // ADD SERVICE
+    void addService(Service s)
+    {
+        cout << "Admin added service: "
+             << s.getName() << endl;
+    }
+
+    // REMOVE SERVICE
+    void removeService(Service s)
+    {
+        cout << "Admin removed service: "
+             << s.getName() << endl;
+    }
+
+    // DISPLAY ADMIN DETAILS
+    void displayAdmin()
+    {
+        cout << "Admin ID: " << adminId << endl;
+        cout << "Admin Name: " << adminName << endl;
+        cout << "Email: " << email << endl;
+    }
+};
 
 
 int main()
@@ -256,6 +310,22 @@ int main()
     sp.login();             // inherited from User
     sp.displayProvider();   // ServiceProvider's own method
     sp.provideService();
+
+cout << "---- Final Class ----" << endl;
+
+Admin admin(
+    9001,
+    "System Admin",
+    "admin@homeservice.com"
+);
+
+admin.displayAdmin();
+
+admin.login();
+
+admin.addService(service2);
+
+admin.removeService(service3);
 
     return 0;
 }
