@@ -68,6 +68,49 @@ private:
     double price;
 
 public:
+// NESTED CLASS
+class Booking
+{
+private:
+    int bookingId;
+    string customerName;
+    string bookingDate;
+    string status;
+
+public:
+
+    // CONSTRUCTOR
+    Booking(int id, string customer, string date)
+    {
+        bookingId = id;
+        customerName = customer;
+        bookingDate = date;
+        status = "Pending";
+    }
+
+    // ACCEPT BOOKING
+    void acceptBooking()
+    {
+        status = "Accepted";
+        cout << "Booking accepted." << endl;
+    }
+
+    // CANCEL BOOKING
+    void cancelBooking()
+    {
+        status = "Cancelled";
+        cout << "Booking cancelled." << endl;
+    }
+
+    // DISPLAY BOOKING
+    void displayBooking()
+    {
+        cout << "Booking ID: " << bookingId << endl;
+        cout << "Customer: " << customerName << endl;
+        cout << "Date: " << bookingDate << endl;
+        cout << "Status: " << status << endl;
+    }
+};
 
     // DEFAULT CONSTRUCTOR
     Service()
