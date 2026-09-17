@@ -66,40 +66,18 @@ private:
     string name;
     string description;
     double price;
-static int service count ;
+static int serviceCount ;
 
 public:
 
-    Service()
-    {
-        serviceId = 0;
-        name = "Unknown";
-        description = "Not Available";
-        price = 0;
-
-        serviceCount++;
-    }
-
-    Service(int id, string n, string d, double p)
-    {
-        serviceId = id;
-        name = n;
-        description = d;
-        price = p;
-
-        serviceCount++;
-    }
-
     static void showServiceCount()
     {
-        cout << "Total Services: "
-             << serviceCount << endl;
+        cout << "Total Services: " << serviceCount << endl;
     }
-};
 
 
-// DEFINE STATIC VARIABLE
-int Service::serviceCount = 0;
+
+
 
 public:
 // NESTED CLASS
@@ -153,6 +131,7 @@ public:
         name = "Unknown";
         description = "Not Available";
         price = 0;
+        serviceCount++ ;
     }
 
     // PARAMETERIZED CONSTRUCTOR
@@ -162,6 +141,7 @@ public:
         name = n;
         description = d;
         price = p;
+        serviceCount++ ;
     }
 
     string getName()
@@ -198,6 +178,9 @@ public:
         return s1.price + s2.price;
     }
 };
+
+// DEFINE STATIC VARIABLE
+int Service::serviceCount = 0;
 
 // SERVICE PROVIDER CLASS
 // ServiceProvider inherits from User
@@ -364,6 +347,9 @@ int main()
     service3.getDetails();
 
     cout << endl;
+    
+    cout << "----- STATIC FUNCTION -----" << endl; 
+    Service::showServiceCount(); cout << endl;
 
 
     // OPERATOR OVERLOADING
