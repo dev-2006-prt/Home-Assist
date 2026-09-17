@@ -354,6 +354,27 @@ int main()
     sp.displayProvider();   // ServiceProvider's own method
     sp.provideService();
 
+    // ------------------------------------
+    // OBJECT SLICING
+    // ------------------------------------
+
+    cout << "---- Object Slicing ----" << endl;
+
+    User user3 = sp;
+
+    cout << "User ID: "
+         << user3.getUserId() << endl;
+
+    cout << "Name: "
+         << user3.getName() << endl;
+
+    cout << "Email: "
+         << user3.getEmail() << endl;
+
+    user3.login();
+
+    cout << endl;
+
 cout << "---- Final Class ----" << endl;
 
 Admin admin(
