@@ -66,6 +66,40 @@ private:
     string name;
     string description;
     double price;
+static int service count ;
+
+public:
+
+    Service()
+    {
+        serviceId = 0;
+        name = "Unknown";
+        description = "Not Available";
+        price = 0;
+
+        serviceCount++;
+    }
+
+    Service(int id, string n, string d, double p)
+    {
+        serviceId = id;
+        name = n;
+        description = d;
+        price = p;
+
+        serviceCount++;
+    }
+
+    static void showServiceCount()
+    {
+        cout << "Total Services: "
+             << serviceCount << endl;
+    }
+};
+
+
+// DEFINE STATIC VARIABLE
+int Service::serviceCount = 0;
 
 public:
 // NESTED CLASS
