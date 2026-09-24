@@ -210,6 +210,11 @@ public:
     }
 
     // METHOD
+    void login() override
+    {
+        cout << name
+             << " logged in as Service Provider." << endl;
+    }
     void provideService()
     {
         cout << name << " provides " << serviceType << " service." << endl;
