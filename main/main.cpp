@@ -234,8 +234,6 @@ class Admin : virtual public User
 {
 private:
     int adminId;
-    string adminName;
-    string email;
 
 public:
 
@@ -243,22 +241,19 @@ public:
     Admin()
     {
         adminId = 0;
-        adminName = "Unknown";
-        email = "Not Provided";
     }
 
     // PARAMETERIZED CONSTRUCTOR
     Admin(int id, string name, string e)
+    : User(id, name, e)
     {
         adminId = id;
-        adminName = name;
-        email = e;
     }
 
     // ADMIN LOGIN
     void login() override
     {
-        cout << adminName
+        cout << name
              << " logged in as Admin." << endl;
     }
 
@@ -280,7 +275,7 @@ public:
     void displayAdmin()
     {
         cout << "Admin ID: " << adminId << endl;
-        cout << "Admin Name: " << adminName << endl;
+        cout << "Admin Name: " << name << endl;
         cout << "Email: " << email << endl;
     }
 };
@@ -300,13 +295,6 @@ public:
     {
     }
 
-    void login() override
-    {
-        cout << name
-             << " logged in as Manager."
-             << endl;
-    }
-
     void displayManager()
     {
         cout << "Manager Name: "
@@ -315,6 +303,15 @@ public:
         cout << "Email: "
              << email << endl;
     }
+
+    void login() override
+    {
+        cout << name
+             << " logged in as Manager."
+             << endl;
+    }
+
+    
 };
 
 int main()
@@ -486,6 +483,31 @@ spPtr->displayProvider();
 spPtr->provideService();
 
 cout << endl;
+
+cout << "---- Virtual Base Class ----" << endl;
+
+Manager manager(
+    701,
+    "Amit",
+    "amit@gmail.com",
+    301,
+    "Electrical",
+    4.8
+);
+
+manager.displayManager();
+
+cout << endl;
+
+manager.provideService();
+
+cout << endl;
+
+manager.addService(service2);
+
+cout << endl;
+
+manager.login();
 
     return 0;
 }
