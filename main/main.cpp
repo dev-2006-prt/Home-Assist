@@ -34,7 +34,7 @@ public:
     }
 
     // PUBLIC METHOD
-    void login()
+   virtual void login()
     {
         cout << name << " logged in successfully." << endl;
     }
