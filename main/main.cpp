@@ -371,6 +371,14 @@ int main()
     sp.displayProvider();   // ServiceProvider's own method
     sp.provideService();
 
+    cout << "---- Virtual Function ----" << endl;
+
+    User* userPtr = &sp;
+
+    userPtr->login();
+
+    cout << endl;
+
     // ------------------------------------
     // OBJECT SLICING
     // ------------------------------------
