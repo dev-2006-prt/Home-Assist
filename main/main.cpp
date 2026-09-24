@@ -439,5 +439,22 @@ cout << endl;
 
 booking.displayBooking();
 
+cout << "---- Pointer to Object ----" << endl;
+
+Service* servicePtr = &service2;
+
+servicePtr->getDetails();
+
+cout << endl;
+
+cout << "---- Pointer to Derived Class ----" << endl;
+
+ServiceProvider* spPtr = &sp;
+
+spPtr->displayProvider();
+spPtr->provideService();
+
+cout << endl;
+
     return 0;
 }
