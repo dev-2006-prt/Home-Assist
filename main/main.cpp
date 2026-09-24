@@ -28,9 +28,9 @@ public:
     // PARAMETERIZED CONSTRUCTOR
     User(int id, string n, string e)
     {
-        userId = id;
-        name = n;
-        email = e;
+        this->userId = id;
+        this->name = n;
+        this->email = e;
     }
 
     // PUBLIC METHOD
@@ -74,9 +74,6 @@ public:
     {
         cout << "Total Services: " << serviceCount << endl;
     }
-
-
-
 
 
 public:
@@ -347,7 +344,7 @@ int main()
     service3.getDetails();
 
     cout << endl;
-    
+
     cout << "----- STATIC FUNCTION -----" << endl; 
     Service::showServiceCount(); cout << endl;
 
