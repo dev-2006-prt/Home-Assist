@@ -182,7 +182,7 @@ int Service::serviceCount = 0;
 // SERVICE PROVIDER CLASS
 // ServiceProvider inherits from User
 
-class ServiceProvider : public User
+class ServiceProvider : virtual public User
 {
 private:
     int serviceProviderId;
@@ -230,7 +230,7 @@ public:
         cout << "Rating: " << rating << endl;
     }
 };
-class Admin final
+class Admin : virtual public User 
 {
 private:
     int adminId;
@@ -256,7 +256,7 @@ public:
     }
 
     // ADMIN LOGIN
-    void login()
+    void login() override
     {
         cout << adminName
              << " logged in as Admin." << endl;
