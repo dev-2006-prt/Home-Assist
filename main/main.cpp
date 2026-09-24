@@ -284,7 +284,38 @@ public:
         cout << "Email: " << email << endl;
     }
 };
+class Manager : public ServiceProvider, public Admin
+{
+public:
 
+    Manager(int spId,
+            string n,
+            string e,
+            int id,
+            string type,
+            double r)
+        : User(id, n, e),
+          ServiceProvider(spId, n, e, id, type, r),
+          Admin(id, n, e)
+    {
+    }
+
+    void login() override
+    {
+        cout << name
+             << " logged in as Manager."
+             << endl;
+    }
+
+    void displayManager()
+    {
+        cout << "Manager Name: "
+             << name << endl;
+
+        cout << "Email: "
+             << email << endl;
+    }
+};
 
 int main()
 {
