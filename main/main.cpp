@@ -20,9 +20,9 @@ public:
     // DEFAULT CONSTRUCTOR
     User()
     {
-        userId = 0;
-        name = "Unknown";
-        email = "Not Provided";
+        this->userId = 0;
+        this->name = "Unknown";
+        this->email = "Not Provided";
     }
 
     // PARAMETERIZED CONSTRUCTOR
