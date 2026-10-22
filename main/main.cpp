@@ -329,6 +329,12 @@ public:
 
     
 };
+// FUNCTION TEMPLATE
+template <class T>
+void displayValue(T value)
+{
+    cout << value << endl;
+}
 
 int main()
 {
@@ -538,6 +544,9 @@ double amount2 = service2;
 
 cout << "Converted price: Rs. "
      << amount2 << endl;
+cout << "---- Templates ----" << endl;
 
-    return 0;
+displayValue(service2.getName());
+displayValue(service2.getPrice());
+displayValue(service2.getServiceId());
 }
