@@ -336,6 +336,35 @@ void displayValue(T value)
     cout << value << endl;
 }
 
+class ServiceInfo
+{
+public:
+    int price;
+
+    ServiceInfo(int p)
+    {
+        price = p;
+    }
+};
+
+class PaymentInfo
+{
+public:
+    int amount;
+
+    // Class-to-class conversion constructor
+    PaymentInfo(ServiceInfo s)
+    {
+        amount = s.price;
+    }
+
+    void display()
+    {
+        cout << "Payment Amount: Rs. "
+             << amount << endl;
+    }
+};
+
 int main()
 {
     // Creating User using DEFAULT CONSTRUCTOR
@@ -549,4 +578,12 @@ cout << "---- Templates ----" << endl;
 displayValue(service2.getName());
 displayValue(service2.getPrice());
 displayValue(service2.getServiceId());
+
+ServiceInfo s(799);
+
+PaymentInfo p = s;
+
+p.display();
+
+return 0 ;
 }
