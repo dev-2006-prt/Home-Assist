@@ -68,6 +68,17 @@ private:
     double price;
 static int serviceCount ;
 
+public :
+// BASIC-TO-CLASS CONVERSION
+Service(double p)
+{
+    serviceId = 0;
+    name = "Custom Service";
+    description = "Created by conversion";
+    price = p;
+    serviceCount++;
+}
+
 public:
 
     static void showServiceCount()
@@ -508,6 +519,13 @@ manager.addService(service2);
 cout << endl;
 
 manager.login();
+
+cout << "---- Basic-to-Class Casting ----" << endl;
+
+double amount = 650;
+Service service4 = amount;
+
+service4.getDetails();
 
     return 0;
 }
