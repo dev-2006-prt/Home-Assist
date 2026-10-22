@@ -579,6 +579,8 @@ displayValue(service2.getName());
 displayValue(service2.getPrice());
 displayValue(service2.getServiceId());
 
+cout <<"---- Class-to-Class Typecasting ----" << endl ;
+
 ServiceInfo s(799);
 
 PaymentInfo p = s;
