@@ -79,6 +79,11 @@ Service(double p)
     serviceCount++;
 }
 
+operator double()
+{
+    return price;
+}
+
 public:
 
     static void showServiceCount()
@@ -526,6 +531,13 @@ double amount = 650;
 Service service4 = amount;
 
 service4.getDetails();
+
+cout << "---- Class-to-Basic Casting ----" << endl;
+
+double amount2 = service2;
+
+cout << "Converted price: Rs. "
+     << amount2 << endl;
 
     return 0;
 }
