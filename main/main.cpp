@@ -597,5 +597,15 @@ try {
 catch (const invalid_argument& e) {
     cout << "Error: " << e.what() << endl;
 }
+
+try {
+    throw invalid_argument("Invalid booking details");
+}
+catch (const invalid_argument& e) {
+    cout << "Specific exception: " << e.what() << endl;
+}
+catch (const exception& e) {
+    cout << "General exception: " << e.what() << endl;
+}
 return 0 ;
 }
