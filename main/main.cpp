@@ -150,6 +150,9 @@ public:
     // PARAMETERIZED CONSTRUCTOR
     Service(int id, string n, string d, double p)
     {
+        if (p <= 0)
+        throw invalid_argument("Price must be positive");
+
         serviceId = id;
         name = n;
         description = d;
@@ -587,5 +590,12 @@ PaymentInfo p = s;
 
 p.display();
 
+cout << "---- Try-catch ----" << endl ;
+try {
+    Service s(999, "Test", "Invalid service", -100);
+}
+catch (const invalid_argument& e) {
+    cout << "Error: " << e.what() << endl;
+}
 return 0 ;
 }
