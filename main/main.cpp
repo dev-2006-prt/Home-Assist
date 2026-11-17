@@ -137,6 +137,10 @@ public:
         cout << "Date: " << bookingDate << endl;
         cout << "Status: " << status << endl;
     }
+
+    int getBookingId(){
+        return bookingId ;
+    }
 };
 
     // DEFAULT CONSTRUCTOR
@@ -202,6 +206,70 @@ int Service::serviceCount = 0;
 
 // SERVICE PROVIDER CLASS
 // ServiceProvider inherits from User
+
+class Payment
+{
+private:
+    int paymentId;
+    int bookingId;
+    double amount;
+    string method;
+    string status;
+
+public:
+    Payment()
+    {
+        paymentId = 0;
+        bookingId = 0;
+        amount = 0;
+        method = "Not Selected";
+        status = "Pending";
+    }
+
+    Payment(int pId, int bId, double amt, string m)
+    {
+        if (amt <= 0)
+            throw invalid_argument("Payment amount must be positive");
+
+        paymentId = pId;
+        bookingId = bId;
+        amount = amt;
+        method = m;
+        status = "Pending";
+    }
+
+    void processPayment()
+    {
+        if (status == "Paid")
+        {
+            cout << "Payment already completed." << endl;
+            return;
+        }
+        status = "Paid";
+        cout << "Payment of Rs. " << amount
+             << " successful via " << method << "." << endl;
+    }
+
+    void refundPayment()
+    {
+        if (status != "Paid")
+        {
+            cout << "Refund not possible. Payment is not completed." << endl;
+            return;
+        }
+        status = "Refunded";
+        cout << "Rs. " << amount << " refunded." << endl;
+    }
+
+    void displayPayment()
+    {
+        cout << "Payment ID: " << paymentId << endl;
+        cout << "Booking ID: " << bookingId << endl;
+        cout << "Amount: Rs. " << amount << endl;
+        cout << "Method: " << method << endl;
+        cout << "Status: " << status << endl;
+    }
+};
 
 class ServiceProvider : virtual public User
 {
