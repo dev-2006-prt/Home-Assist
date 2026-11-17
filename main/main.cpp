@@ -702,6 +702,18 @@ PaymentInfo p = s;
 
 p.display();
 
+    cout << "---- Payment Class ----" << endl;
+
+Payment payment(3001, booking.getBookingId(), service2.getPrice(), "UPI");
+
+payment.displayPayment();
+cout << endl;
+payment.processPayment();
+cout << endl;
+payment.displayPayment();
+
+cout << endl;
+
 cout << "---- Try-catch ----" << endl ;
 try {
     Service s(999, "Test", "Invalid service", -100);
