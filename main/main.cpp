@@ -370,6 +370,48 @@ public:
     }
 };
 
+// FEEDBACK CLASS (Use case: Feed back)
+class Feedback
+{
+private:
+    int feedbackId;
+    string customerName;
+    string serviceName;
+    int rating;
+    string comment;
+
+public:
+    Feedback()
+    {
+        feedbackId = 0;
+        customerName = "Unknown";
+        serviceName = "Not Specified";
+        rating = 0;
+        comment = "No comment";
+    }
+
+    Feedback(int id, string customer, string service, int r, string c)
+    {
+        if (r < 1 || r > 5)
+            throw invalid_argument("Rating must be between 1 and 5");
+
+        feedbackId = id;
+        customerName = customer;
+        serviceName = service;
+        rating = r;
+        comment = c;
+    }
+
+    void displayFeedback()
+    {
+        cout << "Feedback ID: " << feedbackId << endl;
+        cout << "Customer: " << customerName << endl;
+        cout << "Service: " << serviceName << endl;
+        cout << "Rating: " << rating << "/5" << endl;
+        cout << "Comment: " << comment << endl;
+    }
+};
+
 int main()
 {
     // Creating User using DEFAULT CONSTRUCTOR
