@@ -2,6 +2,7 @@
 #include <string>
 #include <thread>
 #include <mutex>
+#include <chrono>
 
 using namespace std;
 
@@ -480,6 +481,32 @@ public:
         cout << "Comment: " << comment << endl;
     }
 };
+// MULTITHREADING: shared data + mutex (synchronization)
+mutex mtx;
+double totalRevenue = 0;     // shared by all threads
+
+// Thread function (use case: Make payment)
+void makePaymentThread(string customer, double amount)
+{
+    lock_guard<mutex> lock(mtx);   // locks here, unlocks automatically at the end
+
+    this_thread::sleep_for(chrono::milliseconds(100));   // sleep()
+    totalRevenue += amount;
+
+    cout << customer << " paid Rs. " << amount
+         << ". Total collected: Rs. " << totalRevenue << endl;
+}
+
+// Class-based thread (C++ version of "Runnable"): use case: Send notification
+class NotificationTask
+{
+public:
+    void operator()()
+    {
+        lock_guard<mutex> lock(mtx);
+        cout << "Notification sent: all payments received." << endl;
+    }
+};
 
 int main()
 {
@@ -740,5 +767,23 @@ catch (const invalid_argument& e) {
 catch (const exception& e) {
     cout << "General exception: " << e.what() << endl;
 }
+    cout << endl;
+cout << "---- Multithreading ----" << endl;
+
+thread t1(makePaymentThread, "Devansh", service2.getPrice());   // thread created and started
+thread t2(makePaymentThread, "Rahul", service3.getPrice());
+thread t3(makePaymentThread, "Amit", service4.getPrice());
+
+this_thread::yield();                // yield()
+
+t1.join();                           // join(): main waits for the thread
+t2.join();
+t3.join();
+
+thread t4{NotificationTask()};       // class-based thread, runs after payments
+t4.join();
+
+cout << "Final revenue: Rs. " << totalRevenue << endl;
+    
 return 0 ;
 }
