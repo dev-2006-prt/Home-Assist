@@ -632,6 +632,14 @@ booking.acceptBooking();
 cout << endl;
 
 booking.displayBooking();
+    cout << "---- Feedback Class ----" << endl;
+
+Feedback feedback(4001, "Devansh", service2.getName(), 5,
+                  "Quick and professional service.");
+
+feedback.displayFeedback();
+
+cout << endl;
 
 cout << "---- Pointer to Object ----" << endl;
 
