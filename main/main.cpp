@@ -40,6 +40,7 @@ public:
     {
         cout << name << " logged in successfully." << endl;
     }
+    virtual ~User() {}
 
     // GETTERS
     int getUserId()
